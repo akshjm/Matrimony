@@ -51,6 +51,7 @@ export class HomePage {
       text: 'No',
       role: 'cancel',
       handler: () => {
+        this.selectToBeDel=0;
         this.isAlertOpen=false;
       },
       cssClass:'alertNo'

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="danger" class="ion-padding-horizontal">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    <ion-title> Manage Photos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding">
+  <!-- add photo on landing -->
+  <div *ngIf="images.length<1">
+    <div style="padding: 5px 0 25px;">
+      Photos are the first thing members look in your profile. Add multiple photos
+      to get more matches.
+    </div>
+    <ion-card class="addPhotoCard" (click)="isActionSheetOpen=true">
+      <ion-card-content class="ion-text-center cardContent" style="height: 100%">
+        <div class="plusWrap">
+          <ion-icon name="add-circle" class="plusClass"></ion-icon>
+        </div>
+        <div class="addPhotoCardTxt">Add Photos</div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!-- photo display -->
+  <div *ngIf="images.length>0"  style="height: 100%;">
+    <div style="padding: 5px 0 25px;">
+      Drag photos to reorder. First photo will be displayed as Profile photo.
+    </div>
+    <ion-grid class="example-boundary">
+      <ion-row cdkDropList (cdkDropListDropped)="drop($event)">
+        <ion-col *ngFor="let image of images; let i=index " cdkDrag cdkDragBoundary=".example-boundary" size="6">
+          <div class="imgWrap">
+            <ion-badge class="closeBadge" (click)="removeImg(i)">
+              <ion-icon name="close-circle" class="closeIcon"></ion-icon>
+            </ion-badge>
+            <ion-badge *ngIf="i==0" class="profilePic">
+              Profile Photo
+            </ion-badge>
+            <img [src]="image?.webPath" style="width: 100%; height: 100%;" />          
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-toast
+  [isOpen]="isToastOpen"
+  message="Photo has been uploaded successfully"
+  [duration]="3000"
+  (didDismiss)="isToastOpen=false"
+  icon="happy-outline"
+></ion-toast>
+</ion-content>
+<!-- actionsheet to upload -->
+<ion-action-sheet
+  [isOpen]="isActionSheetOpen"
+  header="ADD PHOTOS"
+  [buttons]="actionSheetButtons"
+  (didDismiss)="isActionSheetOpen=false">
+</ion-action-sheet>
+<!-- footer -->
+<ion-footer>
+  <ion-toolbar class="ion-text-center">
+    <ion-button (click)="isActionSheetOpen=true" [disabled]="images.length==6" class="addPhotoBtn"> Add Photos </ion-button>
+  </ion-toolbar>
+</ion-footer>

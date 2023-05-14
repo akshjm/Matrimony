@@ -1,0 +1,62 @@
+.addPhotoCard {
+  max-width: 150px;
+  height: 150px;
+}
+.plusClass {
+  font-size: 45px;
+  color: white;
+}
+.addPhotoCardTxt {
+  height: 20%;
+  background: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding-top: 3px;
+}
+.plusWrap {
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.imgWrap {
+  border: 1px solid var(--ion-color-danger);
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.mat-badge-content {
+  font-family: "Material Icons";
+}
+.closeBadge {
+  position: absolute;
+  right: -17px;
+  top: -17px;
+  background: transparent;
+}
+.closeIcon {
+  color: indianred;
+  font-size: 30px;
+}
+.profilePic {
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  right: 0px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: indianred;
+}
+.cardContent {
+  height: 100%;
+  padding: 5px;
+  background: darkgray;
+}
+.addPhotoBtn{
+  --border-radius: 50px;
+  --padding-top: 5px;
+  --padding-bottom:5px;
+  --padding-start:25px;
+  --padding-end:25px
+}

@@ -10,10 +10,11 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  selectToBeDel=0;
   images:Photo[]=[];
   isActionSheetOpen = false;
   isToastOpen:boolean=false;
+  isAlertOpen:boolean=false;
   public actionSheetButtons = [
     {
       text: 'Upload from Gallery',
@@ -35,6 +36,24 @@ export class HomePage {
       handler: ()=>{
         this.openWhatsApp();
       }
+    },
+  ];
+  public alertButtons = [
+    {
+      text: 'Yes',
+      role: 'confirm',
+      handler: () => {
+        this.removeImg(this.selectToBeDel);
+      },
+      cssClass:'alertYes'
+    },
+    {
+      text: 'No',
+      role: 'cancel',
+      handler: () => {
+        this.isAlertOpen=false;
+      },
+      cssClass:'alertNo'
     },
   ];
 
@@ -86,6 +105,7 @@ export class HomePage {
     moveItemInArray(this.images, event.previousIndex, event.currentIndex);
   }
   removeImg(index:any){
+
     this.images.splice(index,1);
   }
 }

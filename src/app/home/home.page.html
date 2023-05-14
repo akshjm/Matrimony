@@ -30,7 +30,7 @@
       <ion-row cdkDropList (cdkDropListDropped)="drop($event)">
         <ion-col *ngFor="let image of images; let i=index " cdkDrag cdkDragBoundary=".example-boundary" size="6">
           <div class="imgWrap">
-            <ion-badge class="closeBadge" (click)="removeImg(i)">
+            <ion-badge class="closeBadge" (click)="isAlertOpen=true; selectToBeDel=i">
               <ion-icon name="close-circle" class="closeIcon"></ion-icon>
             </ion-badge>
             <ion-badge *ngIf="i==0" class="profilePic">
@@ -58,6 +58,14 @@
   [buttons]="actionSheetButtons"
   (didDismiss)="isActionSheetOpen=false">
 </ion-action-sheet>
+<!-- delete alert mgs -->
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Delete"
+  message="Members with multiple photos get better responses. Do you still want to delete this Photo?"
+  [buttons]="alertButtons"
+  (didDismiss)="isAlertOpen=false"
+></ion-alert>
 <!-- footer -->
 <ion-footer>
   <ion-toolbar class="ion-text-center">

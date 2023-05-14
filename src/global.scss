@@ -24,3 +24,17 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+button.alert-button.alertYes{
+    border: 1px solid var(--ion-color-primary);
+      border-radius: 15px;
+      padding: 5px 20px;
+      text-transform: capitalize;
+  }
+  button.alert-button.alertNo{
+    border: 1px solid var(--ion-color-primary);
+      border-radius: 25px;
+      padding: 5px 15px;
+      background: var(--ion-color-primary);
+      color: white;
+      text-transform: capitalize;
+  }
